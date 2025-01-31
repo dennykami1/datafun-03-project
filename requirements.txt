@@ -86,6 +86,12 @@ loguru
 # Making web requests
 requests
 
+#data manipulation library
+pandas
+
+#create charts
+matplotlib
+
 # ======================================================
 # ESSENTIAL TOOLS
 # ======================================================

@@ -92,7 +92,7 @@ def main():
     """
     json_url = 'https://api.worldbank.org/v2/countries/USA/indicators/SP.POP.TOTL?per_page=5000&format=json'
     logger.info("Starting JSON fetch demonstration...")
-    fetch_json_file(fetched_folder_name, "USA_GDP.json", json_url)
+    fetch_json_file(fetched_folder_name, "USA_Population.json", json_url)
 
 #####################################
 # Conditional Execution

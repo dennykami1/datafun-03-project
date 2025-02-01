@@ -11,3 +11,6 @@ __pycache__/
 
 # macOS system files
 .DS_Store
+
+# .gitignore
+fetched_data/MTG_All_Prices_Today.json

@@ -53,12 +53,44 @@ def fetch_json_file(folder_name: str, filename: str, url: str) -> None:
         logger.info(f"Fetching JSON data from {url}...")
         response = requests.get(url)
         response.raise_for_status()
-        write_json_file(folder_name, filename, response.json())
+        json_data = response.json()
+
+        # Truncate the JSON data to reduce its size
+        truncated_data = truncate_json_data(json_data)
+
+        write_json_file(folder_name, filename, truncated_data)
         logger.info(f"SUCCESS: JSON file fetched and saved as {filename}")
     except requests.exceptions.HTTPError as http_err:
         logger.error(f"HTTP error occurred: {http_err}")
     except requests.exceptions.RequestException as req_err:
         logger.error(f"Request error occurred: {req_err}")
+
+def truncate_json_data(json_data: dict, max_size_mb: int = 99) -> dict:
+    """
+    Truncate JSON data to reduce its size.
+
+    Args:
+        json_data (dict): The original JSON data.
+        max_size_mb (int): The maximum size in megabytes.
+
+    Returns:
+        dict: The truncated JSON data.
+    """
+    json_str = json.dumps(json_data)
+    max_size_bytes = max_size_mb * 1024 * 1024
+
+    if len(json_str) <= max_size_bytes:
+        return json_data
+
+    # Truncate the JSON data by reducing the number of items
+    truncated_data = {}
+    for key, value in json_data.items():
+        truncated_data[key] = value
+        if len(json.dumps(truncated_data)) > max_size_bytes:
+            del truncated_data[key]
+            break
+
+    return truncated_data
 
 def write_json_file(folder_name: str, filename: str, json_data: dict) -> None:
     """

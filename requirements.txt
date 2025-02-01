@@ -95,9 +95,6 @@ matplotlib
 #create word cloud
 wordcloud
 
-#Natural Language Toolkit
-nltk
-
 # ======================================================
 # ESSENTIAL TOOLS
 # ======================================================

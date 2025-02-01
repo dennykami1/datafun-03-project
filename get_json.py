@@ -1,8 +1,8 @@
 """
-This example file fetches JSON data of astronauts currently in space 
-from the web and saves it to a local file named example_data/astronauts.json.
+This file fetches JSON data of All Prices of Magic the Gathering Cards
+from the web and saves it to a local file named https://mtgjson.com/api/v5/AllPrices.json.
 
-TODO: Save a copy of the provided utils_logger.py file 
+Save a copy of the provided utils_logger.py file 
 in the same folder as this file.
 """
 
@@ -24,7 +24,7 @@ from utils_logger import logger
 # Declare Global Variables
 #####################################
 
-fetched_folder_name = "example_data"
+fetched_folder_name = "fetched_data"
 
 #####################################
 # Define Functions
@@ -90,9 +90,9 @@ def main():
     """
     Main function to demonstrate fetching JSON data.
     """
-    json_url = 'http://api.open-notify.org/astros.json'
+    json_url = 'https://mtgjson.com/api/v5/AllPricesToday.json'
     logger.info("Starting JSON fetch demonstration...")
-    fetch_json_file(fetched_folder_name, "astros.json", json_url)
+    fetch_json_file(fetched_folder_name, "MTG_All_Prices_Today.json", json_url)
 
 #####################################
 # Conditional Execution
@@ -100,5 +100,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# TODO: Run this script to ensure all functions work as intended.
